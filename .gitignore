@@ -1,0 +1,19 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+
+# Output directories
+/bin
+/pkg
+/build
+
+# Temporary files
+*.log
+*.tmp
+
+# Go workspace files
+go.sum
