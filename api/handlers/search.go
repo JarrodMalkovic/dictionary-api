@@ -16,12 +16,6 @@ func InitElastic(client *elasticsearch.Client) {
 }
 
 func SearchWordsHandler(w http.ResponseWriter, r *http.Request) {
-    apiKey := r.URL.Query().Get("api_key")
-    if !checkAPIKey(apiKey) {
-        http.Error(w, "Unauthorized", http.StatusUnauthorized)
-        return
-    }
-
     query := r.URL.Query().Get("q")
     if query == "" {
         http.Error(w, "Missing query parameter 'q'", http.StatusBadRequest)

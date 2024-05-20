@@ -21,12 +21,6 @@ func Init(client *mongo.Client) {
 }
 
 func GetWordHandler(w http.ResponseWriter, r *http.Request) {
-    apiKey := r.URL.Query().Get("api_key")
-    if !checkAPIKey(apiKey) {
-        http.Error(w, "Unauthorized", http.StatusUnauthorized)
-        return
-    }
-
     vars := mux.Vars(r)
     word := vars["word"]
 
@@ -48,6 +42,3 @@ func GetWordHandler(w http.ResponseWriter, r *http.Request) {
     json.NewEncoder(w).Encode(entry)
 }
 
-func checkAPIKey(apiKey string) bool {
-    return apiKey == config.LoadConfig().APIKey
-}
